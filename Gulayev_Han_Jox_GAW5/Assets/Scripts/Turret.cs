@@ -6,7 +6,8 @@ public class Turret : MonoBehaviour
 {
     private Transform target;
     public float range = 15f;
-
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
 
     // Start is called before the first frame update
     void Start()
