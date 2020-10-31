@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerTurret : MonoBehaviour
 {
     Vector2 direction;
-    public float force;
+    public float shotSpeed;
     public GameObject projectile;
-    public int damage;
+    public float damage;
+    public Transform firePoint;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +29,9 @@ public class PlayerTurret : MonoBehaviour
     }
 
     public void Shoot(){
-        GameObject newProjectile = Instantiate(projectile);
-        newProjectile.transform.position = transform.position;
+        GameObject newProjectile = Instantiate(projectile, firePoint.position, transform.rotation);
+        //newProjectile.transform.position = firePoint.position;
         newProjectile.GetComponent<Projectile>().damage = damage;
-        newProjectile.GetComponent<Rigidbody2D>().AddForce(direction * force);
+        newProjectile.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shotSpeed);
     }
 }

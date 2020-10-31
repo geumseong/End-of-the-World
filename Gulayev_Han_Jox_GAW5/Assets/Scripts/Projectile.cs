@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     Rigidbody2D rb;
     public ParticleSystem ps;
     public Vector2 direction;
-    public int damage;
+    public float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +20,12 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-        transform.Translate(direction * Time.deltaTime);
+        transform.rotation = Quaternion.AngleAxis(angle -90, Vector3.forward);
     }
 
     void OnTriggerStay2D(Collider2D collider) {
         if(collider.tag == "Enemy") {
-            collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= 0.2f;
+            collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
             if(collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
                 Destroy(collider.gameObject);
             }
