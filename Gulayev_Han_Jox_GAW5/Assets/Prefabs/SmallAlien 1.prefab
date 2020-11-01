@@ -223,7 +223,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7767601, y: 0.7767601, z: 0.7767601}
-  m_Children: []
+  m_Children:
+  - {fileID: 6921580106708007877}
   m_Father: {fileID: 183079030625989837}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -311,7 +312,6 @@ Transform:
   m_Children:
   - {fileID: 4486363624887364633}
   - {fileID: 410344267882897225}
-  - {fileID: 6921580106708007877}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -419,7 +419,7 @@ MonoBehaviour:
   fireRate: 1
   damage: 0.1
   shotSpeed: 400
-  projectile: {fileID: 7466414087439331947, guid: 3f94cf0c388cf5c418a70106be89497a,
+  projectile: {fileID: 4211104026879146005, guid: 3f94cf0c388cf5c418a70106be89497a,
     type: 3}
   firePoint: {fileID: 6921580106708007877}
   rotateImage: {fileID: 4731958539833713196}
@@ -546,10 +546,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7650724071640954635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.93, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.4846797, z: 0}
+  m_LocalScale: {x: 1.2873988, y: 1.2873988, z: 1.2873988}
   m_Children: []
-  m_Father: {fileID: 183079030625989837}
-  m_RootOrder: 2
+  m_Father: {fileID: 410344267882897225}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

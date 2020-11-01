@@ -3171,8 +3171,10 @@ MonoBehaviour:
     type: 3}
   smallAliens: {fileID: 5908579970465349571, guid: d5847a37cf2a14a44ac7e07b3e31b4b4,
     type: 3}
-  mediumAliens: {fileID: 0}
-  bossAliens: {fileID: 0}
+  mediumAliens: {fileID: 7871028643234007600, guid: 7aaa3244ed31a3a44a6126b7f062f654,
+    type: 3}
+  bossAliens: {fileID: 4473676901091716650, guid: bd1a499404ec0f74a92bd6d9d78c6cfe,
+    type: 3}
   spawnPoints:
   - {fileID: 1993846706}
   - {fileID: 1529535823}

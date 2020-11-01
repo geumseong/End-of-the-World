@@ -38,7 +38,7 @@ public class SmallAlien : MonoBehaviour
             Vector2 rotationPivot = transform.position;
             Vector2 targetPos = target.position;
             Vector2 dir = targetPos - rotationPivot;
-            rotateImage.transform.up = dir;
+            rotateImage.transform.up = -dir;
         }
     }
 
