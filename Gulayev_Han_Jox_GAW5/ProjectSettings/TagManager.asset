@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - ProjectileRemover
+  - Meteorite
+  - SmallAlien
+  - MediumAlien
+  - BossAlien
   layers:
   - Default
   - TransparentFX

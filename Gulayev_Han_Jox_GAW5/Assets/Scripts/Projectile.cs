@@ -9,11 +9,13 @@ public class Projectile : MonoBehaviour
     public ParticleSystem ps;
     public Vector2 direction;
     public float damage;
+    GameObject gameStateManagerObj;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameStateManagerObj = GameObject.Find("GameStateManager");
     }
 
     // Update is called once per frame
@@ -27,7 +29,23 @@ public class Projectile : MonoBehaviour
         if(collider.tag == "Enemy") {
             collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
             if(collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
+                if(collider.gameObject.transform.parent.gameObject.tag == "Meteorite"){
+                    gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(20);
+                }
+                else if(collider.gameObject.transform.parent.gameObject.tag == "SmallAlien") {
+                    gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(50);
+                }
+                else if(collider.gameObject.transform.parent.gameObject.tag == "MediumAlien") {
+                    gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(100);
+                }
+                else if(collider.gameObject.transform.parent.gameObject.tag == "BossAlien") {
+                    gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(300);
+                }
                 Destroy(collider.gameObject.transform.parent.gameObject);
+                if(gameStateManagerObj.GetComponent<GameStateManager>().waveStatus == false
+                    && gameStateManagerObj.GetComponent<GameStateManager>().countDownStatus == false) {
+                    gameStateManagerObj.GetComponent<GameStateManager>().StartCountDown();
+                }
             }
             Destroy(gameObject);
         }

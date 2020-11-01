@@ -10,6 +10,7 @@ public class TurretProjectile : MonoBehaviour
     public float damage;
     public float speed;
     Transform target;
+    GameObject gameStateManagerObj;
 
     public void Seek (Transform _target) {
         target = _target;
@@ -17,6 +18,7 @@ public class TurretProjectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameStateManagerObj = GameObject.Find("GameStateManager");
     }
 
     // Update is called once per frame
@@ -44,7 +46,23 @@ public class TurretProjectile : MonoBehaviour
     void HitTarget() {
         target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
         if(target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
+            if(target.gameObject.transform.parent.gameObject.tag == "Meteorite"){
+                gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(20);
+            }
+            else if(target.gameObject.transform.parent.gameObject.tag == "SmallAlien") {
+                gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(50);
+            }
+            else if(target.gameObject.transform.parent.gameObject.tag == "MediumAlien") {
+                gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(100);
+            }
+            else if(target.gameObject.transform.parent.gameObject.tag == "BossAlien") {
+                gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(300);
+            }
             Destroy(target.gameObject.transform.parent.gameObject);
+            if(gameStateManagerObj.GetComponent<GameStateManager>().waveStatus == false
+                && gameStateManagerObj.GetComponent<GameStateManager>().countDownStatus == false) {
+                gameStateManagerObj.GetComponent<GameStateManager>().StartCountDown();
+            }
         }
         Destroy(gameObject);
     }

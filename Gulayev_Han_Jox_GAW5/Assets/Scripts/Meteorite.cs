@@ -11,10 +11,12 @@ public class Meteorite : MonoBehaviour
     public Vector3 direction;
     public int healthPoint = 100;
     public int rotationSpeed;
+    GameObject gameStateManagerObj;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameStateManagerObj = GameObject.Find("GameStateManager");
         Vector3 direction = transform.position - GameObject.Find("earth").transform.position;
     }
 
@@ -27,6 +29,10 @@ public class Meteorite : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Player") {
+            if(gameStateManagerObj.GetComponent<GameStateManager>().waveStatus == false
+                && gameStateManagerObj.GetComponent<GameStateManager>().countDownStatus == false) {
+                gameStateManagerObj.GetComponent<GameStateManager>().StartCountDown();
+            }
             GameObject healthPoint = GameObject.Find("EarthHPBarFull");
             healthPoint.GetComponent<Image>().fillAmount -= 0.1f;
             Debug.Log("collided");

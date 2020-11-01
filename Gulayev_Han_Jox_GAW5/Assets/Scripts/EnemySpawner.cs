@@ -9,11 +9,16 @@ public class EnemySpawner : MonoBehaviour
     public GameObject mediumAliens;
     public GameObject bossAliens;
     public List<GameObject> spawnPoints;
+    public GameObject gameStateManagerObj;
 
     // Start is called before the first frame update
     public void StartSpawnEnemy(int waveCount)
     {
         StartCoroutine(SpawnEnemy(waveCount));
+    }
+
+    void Start() {
+        gameStateManagerObj = GameObject.Find("GameStateManager");
     }
 
     // Update is called once per frame
@@ -38,6 +43,7 @@ public class EnemySpawner : MonoBehaviour
                 newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                 meteoriteCount++;
             }
+            gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;
             yield return null;
         }
         else if(waveCount == 2) {
@@ -86,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
                     }
                 }
             }
+            gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;
             yield return null;
         }
         else if(waveCount == 3) {
@@ -103,7 +110,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject selectedSpawn = spawnPoints[spawnPoint];
                         Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
                         GameObject newEnemy = Instantiate(mediumAliens, spawnPosition, transform.rotation);
-                        newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                        newEnemy.GetComponent<MediumAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         mediumAlienCount++;
                     }
                     else {
@@ -129,11 +136,12 @@ public class EnemySpawner : MonoBehaviour
                         GameObject selectedSpawn = spawnPoints[spawnPoint];
                         Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
                         GameObject newEnemy = Instantiate(mediumAliens, spawnPosition, transform.rotation);
-                        newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                        newEnemy.GetComponent<MediumAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         mediumAlienCount++;
                     }
                 }
             }
+            gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;
             yield return null;
         }
         else if(waveCount == 4) {
@@ -148,6 +156,7 @@ public class EnemySpawner : MonoBehaviour
                 newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                 mediumAlienCount++;
             }
+            gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;
             yield return null;
         }
         else if(waveCount == 5) {
@@ -156,7 +165,9 @@ public class EnemySpawner : MonoBehaviour
             GameObject selectedSpawn = spawnPoints[spawnPoint];
             Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
             GameObject newEnemy = Instantiate(bossAliens, spawnPosition, transform.rotation);
-            newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+            newEnemy.GetComponent<BossAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+
+            gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;
         }
         yield return null;
     }

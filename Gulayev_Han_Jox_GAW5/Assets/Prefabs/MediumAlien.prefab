@@ -338,10 +338,10 @@ GameObject:
   - component: {fileID: 1094238834703203825}
   - component: {fileID: 6783997525670990883}
   - component: {fileID: 500800913129254230}
-  - component: {fileID: 3533743128142518151}
+  - component: {fileID: 7974780092569006571}
   m_Layer: 0
   m_Name: MediumAlien
-  m_TagString: Untagged
+  m_TagString: MediumAlien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,9 +425,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021720886, y: 0.18395948}
+  m_Offset: {x: 0.00028800964, y: 0.18395948}
   serializedVersion: 2
-  m_Radius: 7.163207
+  m_Radius: 5.9415865
 --- !u!50 &500800913129254230
 Rigidbody2D:
   serializedVersion: 4
@@ -449,7 +449,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3533743128142518151
+--- !u!114 &7974780092569006571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7871028643234007600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 004ce47b31bf0b14eb1fd4bcbbe088a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 07116582f9d92dd4f91b310aed502081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.35

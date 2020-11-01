@@ -225,10 +225,10 @@ GameObject:
   - component: {fileID: 6629782184955320811}
   - component: {fileID: 940032307319664697}
   - component: {fileID: 6187101942700886348}
-  - component: {fileID: 7071868635848635293}
+  - component: {fileID: -1531824633283791601}
   m_Layer: 0
   m_Name: BossAlien
-  m_TagString: Untagged
+  m_TagString: BossAlien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,9 +312,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021720886, y: 0.036797523}
+  m_Offset: {x: -0.073503494, y: 0.036797523}
   serializedVersion: 2
-  m_Radius: 8.193345
+  m_Radius: 6.8030643
 --- !u!50 &6187101942700886348
 Rigidbody2D:
   serializedVersion: 4
@@ -336,7 +336,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7071868635848635293
+--- !u!114 &-1531824633283791601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4473676901091716650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 004ce47b31bf0b14eb1fd4bcbbe088a6, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2b05a8c46366142b672d7f7d477b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.35
