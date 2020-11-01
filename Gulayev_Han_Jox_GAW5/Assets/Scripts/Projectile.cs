@@ -31,5 +31,8 @@ public class Projectile : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        else if(collider.tag == "ProjectileRemover") {
+            Destroy(gameObject);
+        }
     }
 }

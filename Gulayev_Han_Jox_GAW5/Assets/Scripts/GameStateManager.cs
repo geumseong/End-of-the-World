@@ -9,21 +9,7 @@ public class GameStateManager : MonoBehaviour
     public GameObject waveCountObj;
     int waveCount;
     public GameObject buyTimeObj;
-    int maxAsteroids;
-    int maxSmallAliens;
-    int maxMedAliens;
-    int maxBossAliens;
     
-    /*
-        Wave 1: Meteorites (10)
-        Wave 2: Meteorites & Small Aliens (10 meteorites + 5 small aliens)
-        Wave 3: Small Aliens & Medium Aliens (10 small aliens + 5 medium)
-        Wave 4: Medium Aliens (15 mediums)
-        Wave 5: Boss (1 boss)
-        Infinite Stages (Maybe Implement Increasing Health system)
-    */
-
-    // Start is called before the first frame update
     void Start()
     {
         enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();

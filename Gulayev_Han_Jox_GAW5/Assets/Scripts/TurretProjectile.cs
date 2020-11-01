@@ -48,16 +48,9 @@ public class TurretProjectile : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
-    /*
     void OnTriggerStay2D(Collider2D collider) {
-        if(collider.tag == "Enemy") {
-            collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
-            if(collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
-                Destroy(collider.gameObject);
-            }
+        if(collider.tag == "ProjectileRemover") {
             Destroy(gameObject);
         }
     }
-    */
 }
