@@ -751,10 +751,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1156,7 +1156,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 617875891}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: Sell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &617875891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1843,6 +1854,7 @@ MonoBehaviour:
   healthSprite:
   - {fileID: 21300000, guid: ae90f17d1097980428ce2c1f1a3022f5, type: 3}
   - {fileID: 21300000, guid: 7022d0dd0606653479cc3e6bf3c4d0df, type: 3}
+  description: {fileID: 428596727}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,7 +2742,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1280569646}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: Buy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1280569646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3772,8 +3795,8 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Owned Money: 0$'
 --- !u!222 &1834325637
