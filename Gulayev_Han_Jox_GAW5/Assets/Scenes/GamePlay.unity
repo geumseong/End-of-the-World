@@ -572,7 +572,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 3f3aa9c63230f9e429470d8b4058fe55, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -584,7 +584,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 375285909}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: PressOnFuture
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &375285909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,7 +840,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 55e39d3385ddbc34988807a5e28c4d32, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -841,7 +852,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 456764284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: PressOnIce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &456764284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +958,7 @@ GameObject:
   - component: {fileID: 521287497}
   - component: {fileID: 521287496}
   m_Layer: 5
-  m_Name: Nuke
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -992,7 +1014,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 7022d0dd0606653479cc3e6bf3c4d0df, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1004,7 +1026,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 521287497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: PressOnHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &521287497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1685,6 +1718,7 @@ GameObject:
   - component: {fileID: 942766964}
   - component: {fileID: 942766963}
   - component: {fileID: 942766962}
+  - component: {fileID: 942766966}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
@@ -1772,6 +1806,43 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &942766966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942766961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ea8e034e1b67741883b9d2d622ab2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStateManager: {fileID: 1096742177}
+  primaryButton: {fileID: 971625568}
+  rocketButton: {fileID: 1021164831}
+  laserButton: {fileID: 2098167896}
+  iceButton: {fileID: 456764281}
+  futureButton: {fileID: 375285906}
+  healthButton: {fileID: 521287494}
+  primarySprite:
+  - {fileID: 21300000, guid: 3e133f0050b872141872c46e151614b2, type: 3}
+  - {fileID: 21300000, guid: 3f44de58bd468864bb7514e42caa2d42, type: 3}
+  rocketSprite:
+  - {fileID: 21300000, guid: 7ab7ecd862ee2b64cbd821f572f3f4ad, type: 3}
+  - {fileID: 21300000, guid: a08b6b79ca5300942a18cda0bb3e19be, type: 3}
+  laserSprite:
+  - {fileID: 21300000, guid: 52ad4d26846c22746b01498b4893c10e, type: 3}
+  - {fileID: 21300000, guid: 8b19f1492eac6e7438b7acd5465184e8, type: 3}
+  iceSprite:
+  - {fileID: 21300000, guid: 835cc268993109e46ae953b762466f51, type: 3}
+  - {fileID: 21300000, guid: 55e39d3385ddbc34988807a5e28c4d32, type: 3}
+  futureSprite:
+  - {fileID: 21300000, guid: d9b7cfffd3eb45e4d98f9b2289e8018a, type: 3}
+  - {fileID: 21300000, guid: 3f3aa9c63230f9e429470d8b4058fe55, type: 3}
+  healthSprite:
+  - {fileID: 21300000, guid: ae90f17d1097980428ce2c1f1a3022f5, type: 3}
+  - {fileID: 21300000, guid: 7022d0dd0606653479cc3e6bf3c4d0df, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,7 +1995,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 3f44de58bd468864bb7514e42caa2d42, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1936,7 +2007,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 971625571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: PressOnPrimary
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &971625571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2117,7 +2199,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: a08b6b79ca5300942a18cda0bb3e19be, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2129,7 +2211,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1021164834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: PressOnRocket
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1021164834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4006,7 +4099,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 8b19f1492eac6e7438b7acd5465184e8, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4018,7 +4111,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2098167899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 942766966}
+        m_MethodName: PressOnLaser
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2098167899
 MonoBehaviour:
   m_ObjectHideFlags: 0
