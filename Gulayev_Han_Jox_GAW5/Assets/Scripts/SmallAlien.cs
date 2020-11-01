@@ -33,7 +33,7 @@ public class SmallAlien : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(moving == true) {
+        if(moving == true && target != null) {
             transform.Translate(direction * speed * Time.deltaTime);
             Vector2 rotationPivot = transform.position;
             Vector2 targetPos = target.position;
