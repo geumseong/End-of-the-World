@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9bef946a787d2514fb51d8b76cb4e4ac
+guid: 3ba57144fd985414a80804b5ea3ebb05
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7127769706924348086
-    second: SpaceShip_0
+      213: 4317343309410653154
+    second: Alien Medium Pew_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -90,13 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpaceShip_0
+      name: Alien Medium Pew_0
       rect:
         serializedVersion: 2
-        x: 313
-        y: 335
-        width: 339
-        height: 378
+        x: 0
+        y: 0
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,8 +104,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b2140ea8cceae260800000000000000
-      internalID: 7127769706924348086
+      spriteID: 2e3d4da9dd84aeb30800000000000000
+      internalID: 4317343309410653154
       vertices: []
       indices: 
       edges: []

@@ -44,7 +44,7 @@ public class TurretProjectile : MonoBehaviour
     void HitTarget() {
         target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
         if(target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
-            Destroy(target.gameObject);
+            Destroy(target.gameObject.transform.parent.gameObject);
         }
         Destroy(gameObject);
     }

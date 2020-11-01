@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject meteorite;
+    public GameObject smallAliens;
+    public GameObject mediumAliens;
+    public GameObject bossAliens;
     public List<GameObject> spawnPoints;
 
     // Start is called before the first frame update
-    void Start()
+    public void StartSpawnEnemy(int waveCount)
     {
-        StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnEnemy(waveCount));
     }
 
     // Update is called once per frame
@@ -19,14 +22,80 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    IEnumerator SpawnEnemy() {
-        while(true) {
-            int spawnPoint = Random.Range(0, 14);
-            GameObject selectedSpawn = spawnPoints[spawnPoint];
-            Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
-            GameObject newEnemy = Instantiate(enemy, spawnPosition, transform.rotation);
-            newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
-            yield return new WaitForSeconds(2);
+    IEnumerator SpawnEnemy(int waveCount) {
+        if(waveCount > 5) {
+
+        }
+        else if(waveCount == 1) {
+            int meteoriteCount = 0;
+            int maxMeteoriteCount = 10;
+            while(meteoriteCount < maxMeteoriteCount) {
+                yield return new WaitForSeconds(2);
+                int spawnPoint = Random.Range(0, 14);
+                GameObject selectedSpawn = spawnPoints[spawnPoint];
+                Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
+                GameObject newEnemy = Instantiate(meteorite, spawnPosition, transform.rotation);
+                newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                meteoriteCount++;
+            }
+            yield return null;
+        }
+        else if(waveCount == 2) {
+            int meteoriteCount = 0;
+            int smallAlienCount = 0;
+            int maxMeteoriteCount = 10;
+            int maxSmallAlienCount = 5;
+            int totalSpawn = 0;
+            while(totalSpawn < (maxMeteoriteCount + maxSmallAlienCount)) {
+                int random = Random.Range(0, 3);
+                yield return new WaitForSeconds(2);
+                if(random < 2) {
+                    if(meteoriteCount < maxMeteoriteCount) {
+                        int spawnPoint = Random.Range(0, 14);
+                        GameObject selectedSpawn = spawnPoints[spawnPoint];
+                        Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
+                        GameObject newEnemy = Instantiate(meteorite, spawnPosition, transform.rotation);
+                        newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                        meteoriteCount++;
+                    }
+                    else {
+                        int spawnPoint = Random.Range(0, 14);
+                        GameObject selectedSpawn = spawnPoints[spawnPoint];
+                        Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
+                        GameObject newEnemy = Instantiate(smallAliens, spawnPosition, transform.rotation);
+                        newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                        smallAlienCount++;
+                    }
+                }
+                else if(random == 2) {
+                    if(smallAlienCount < maxSmallAlienCount) {
+                        int spawnPoint = Random.Range(0, 14);
+                        GameObject selectedSpawn = spawnPoints[spawnPoint];
+                        Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
+                        GameObject newEnemy = Instantiate(smallAliens, spawnPosition, transform.rotation);
+                        newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                        smallAlienCount++;
+                    }
+                    else {
+                        int spawnPoint = Random.Range(0, 14);
+                        GameObject selectedSpawn = spawnPoints[spawnPoint];
+                        Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
+                        GameObject newEnemy = Instantiate(meteorite, spawnPosition, transform.rotation);
+                        newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                        meteoriteCount++;
+                    }
+                }
+            }
+            yield return null;
+        }
+        else if(waveCount == 3) {
+
+        }
+        else if(waveCount == 4) {
+
+        }
+        else if(waveCount == 5) {
+
         }
         yield return null;
     }

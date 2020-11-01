@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Projectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     Rigidbody2D rb;
     public ParticleSystem ps;
@@ -24,10 +24,10 @@ public class Projectile : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D collider) {
-        if(collider.tag == "Enemy") {
-            collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
-            if(collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
-                Destroy(collider.gameObject.transform.parent.gameObject);
+        if(collider.tag == "Player") {
+            collider.transform.GetChild(0).transform.Find("EarthHPBarFull").GetComponent<Image>().fillAmount -= damage;
+            if(collider.transform.GetChild(0).transform.Find("EarthHPBarFull").GetComponent<Image>().fillAmount <= 0) {
+                Destroy(collider.gameObject);
             }
             Destroy(gameObject);
         }
