@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class Meteorite : MonoBehaviour
 {
     //public GameObject player;
+    public GameObject rotateImageObj;
     public float speed;
     public Vector3 direction;
     public int healthPoint = 100;
+    public int rotationSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class Meteorite : MonoBehaviour
     void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime);
+        rotateImageObj.transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
     }
 
     void OnTriggerStay2D(Collider2D collision) {
