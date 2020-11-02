@@ -9,11 +9,13 @@ public class EnemyProjectile : MonoBehaviour
     public ParticleSystem ps;
     public Vector2 direction;
     public float damage;
+    public GameObject gameStateManagerObj;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameStateManagerObj = GameObject.Find("GameStateManager");
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class EnemyProjectile : MonoBehaviour
             collider.transform.GetChild(0).transform.Find("EarthHPBarFull").GetComponent<Image>().fillAmount -= damage;
             if(collider.transform.GetChild(0).transform.Find("EarthHPBarFull").GetComponent<Image>().fillAmount <= 0) {
                 Destroy(collider.gameObject);
+                gameStateManagerObj.GetComponent<GameStateManager>().GameOver();
             }
             Destroy(gameObject);
         }

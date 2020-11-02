@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public Vector2 direction;
     public float damage;
     GameObject gameStateManagerObj;
+    public GameObject DeathEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,9 @@ public class Projectile : MonoBehaviour
                     gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(300);
                 }
                 Destroy(collider.gameObject.transform.parent.gameObject);
-                if(gameStateManagerObj.GetComponent<GameStateManager>().waveStatus == false
+                GameObject effectIns = (GameObject)Instantiate(DeathEffect, collider.gameObject.transform.position, transform.rotation);
+                Destroy(effectIns, 1f);
+                if (gameStateManagerObj.GetComponent<GameStateManager>().waveStatus == false
                     && gameStateManagerObj.GetComponent<GameStateManager>().countDownStatus == false) {
                     gameStateManagerObj.GetComponent<GameStateManager>().StartCountDown();
                 }

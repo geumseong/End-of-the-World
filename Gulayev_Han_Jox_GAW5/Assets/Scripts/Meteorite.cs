@@ -38,9 +38,9 @@ public class Meteorite : MonoBehaviour
             Debug.Log("collided");
             if(healthPoint.GetComponent<Image>().fillAmount <= 0) {
                 Debug.Log("Game Over");
-                Time.timeScale = 0f;
+                gameStateManagerObj.GetComponent<GameStateManager>().GameOver();
             }
-            Destroy(gameObject);
+           Destroy(gameObject);
         }
     }
 }

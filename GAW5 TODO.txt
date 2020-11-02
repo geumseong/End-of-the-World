@@ -10,10 +10,10 @@ Balancings
  - Balancing (spawned enemies & Damage & Price)   <-- Got No Idea, gonna be pain
  - Damage / HP system   <-- Got No Idea, gonna be pain
 
-In-Game Menu  <-- Timescale 0f + Show Canvas (Continue button/Resume button + Restart Button + Back To Main Menu Button)
+In-Game Menu  <-- Timescale 0f + Show Canvas (Continue button/Resume button + Restart Button + Back To Main Menu Button) - (Done)
 
-GameOver Screen  <--  Timscale 0f + Show Canvas (Show Waves Survived : "wave count")
+GameOver Screen  <--  Timscale 0f + Show Canvas (Show Waves Survived : "wave count") - (Done)
 
 ----------------------------If Got Time -----------------------
-Particle Effects (explosion / gun projectile particles) - (Done / Probably)
-Screen Shakes when damaged by enemy.
+Particle Effects (explosion / gun projectile particles) - (Done)
+Screen Shakes when damaged by enemy. - (Done)
