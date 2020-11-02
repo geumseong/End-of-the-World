@@ -6,7 +6,7 @@ Script for Ice Turret / Ice Projectile - Enemies hit by it becomes slower (Done)
 
 Hold Click for Player Turret (Done)
 
-Buy (placing turret) / Sell Existing Turret / Cancel button after you click on buy.
+Buy (placing turret) / Sell Existing Turret / Cancel button after you click on buy. (Done)
 
 Balancings
  - Balancing (spawned enemies & Damage & Price)   <-- Got No Idea, gonna be pain
