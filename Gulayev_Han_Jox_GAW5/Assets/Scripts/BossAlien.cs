@@ -8,7 +8,7 @@ public class BossAlien : MonoBehaviour
     public float speed;
     public Vector3 direction;
     bool moving;
-    
+    public float range = 15f;
     
     public float fireRate = 1f;
     private float fireCountdown = 0f;
@@ -40,18 +40,21 @@ public class BossAlien : MonoBehaviour
             Vector2 dir = targetPos - rotationPivot;
             rotateImage.transform.up = -dir;
         }
+        float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position); 
+        if(distanceToEnemy < range) {
+            if(fireCountdown <= 0f) {
+                PewPew();
+                fireCountdown = 1f/fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
+        }
     }
 
     void OnTriggerStay2D(Collider2D collision) {
         if(collision.tag == "Player") {
             moving = false;
         }
-        if(fireCountdown <= 0f) {
-            PewPew();
-            fireCountdown = 1f/fireRate;
-        }
-
-        fireCountdown -= Time.deltaTime;
     }
 
     void PewPew() {
@@ -59,5 +62,10 @@ public class BossAlien : MonoBehaviour
         //newProjectile.transform.position = firePoint.position;
         newProjectile.GetComponent<EnemyProjectile>().damage = damage;
         newProjectile.GetComponent<Rigidbody2D>().AddForce(direction.normalized * shotSpeed);
+    }
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

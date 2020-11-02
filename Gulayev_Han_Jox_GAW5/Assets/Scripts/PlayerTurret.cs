@@ -9,6 +9,9 @@ public class PlayerTurret : MonoBehaviour
     public GameObject projectile;
     public float damage;
     public Transform firePoint;
+    bool fireStatus = false;
+    private float fireCountdown = 0f;
+    public float fireRate = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +26,18 @@ public class PlayerTurret : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //position of moouse
         direction = mousePosition - rotationPivot; //Finds Vector2 direction by (mousePos - turretPos)
         transform.up = direction; //And transform.up - direction somehow does the rest.
+        if(Input.GetMouseButtonDown(0)) {
+            fireStatus = true;
+        }
         if(Input.GetMouseButtonUp(0)) {
-            Shoot();
+            fireStatus = false;
+        }
+        if(fireStatus == true) {
+            if(fireCountdown <= 0f) {
+                Shoot();
+                fireCountdown = 1f/fireRate;
+            }
+            fireCountdown -= Time.deltaTime;
         }
     }
 
