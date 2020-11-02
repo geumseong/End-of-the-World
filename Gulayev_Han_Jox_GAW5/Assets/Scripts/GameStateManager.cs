@@ -16,6 +16,14 @@ public class GameStateManager : MonoBehaviour
     public GameObject shopUI;
     public GameObject moneyOwnedTxt;
     public int money = 0;
+    public GameObject GameOverUI;
+
+    public void GameOver()
+    {
+        GameOverUI.SetActive(true);
+        GameObject.Find("WaveCountTXT").GetComponent<Text>().text = "Waves Survived: \n" + (waveCount - 1);
+        Time.timeScale = 0f;
+    }
     
     void Start()
     {
@@ -24,6 +32,7 @@ public class GameStateManager : MonoBehaviour
         waveCount = 0;
         waveCountObj.GetComponent<Text>().text = "Waves: 0";
         moneyOwnedTxt.GetComponent<Text>().text = "Owned Money: " + money;
+        GameOverUI.SetActive(false);
     }
 
     // Update is called once per frame

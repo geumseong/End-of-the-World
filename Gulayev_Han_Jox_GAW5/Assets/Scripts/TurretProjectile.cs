@@ -11,6 +11,7 @@ public class TurretProjectile : MonoBehaviour
     public float speed;
     Transform target;
     GameObject gameStateManagerObj;
+    public GameObject DeathEffect;
 
     public void Seek (Transform _target) {
         target = _target;
@@ -59,6 +60,8 @@ public class TurretProjectile : MonoBehaviour
                 gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(300);
             }
             Destroy(target.gameObject.transform.parent.gameObject);
+            GameObject effectIns = (GameObject)Instantiate(DeathEffect, target.position, transform.rotation);
+            Destroy(effectIns, 1f);
             if(gameStateManagerObj.GetComponent<GameStateManager>().waveStatus == false
                 && gameStateManagerObj.GetComponent<GameStateManager>().countDownStatus == false) {
                 gameStateManagerObj.GetComponent<GameStateManager>().StartCountDown();
