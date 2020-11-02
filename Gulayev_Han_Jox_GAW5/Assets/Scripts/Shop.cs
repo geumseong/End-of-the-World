@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public GameStateManager gameStateManager;
-    string selected;
+
     public GameObject primaryButton;
     public GameObject rocketButton;
     public GameObject laserButton;
@@ -22,8 +22,24 @@ public class Shop : MonoBehaviour
     public List<Sprite> healthSprite;
     public Text description;
 
+    public GameObject weaponSlotUI;
+    public GameObject slotS;
+    public GameObject slotSE;
+    public GameObject slotE;
+    public GameObject slotNE;
+    public GameObject slotN;
+    public GameObject slotNW;
+    public GameObject slotW;
+    public GameObject slotSW;
+    public List<Sprite> slotSprite;
 
-    public void Stater() {
+    string selected;
+    bool buyAction;
+    bool sellAction;
+
+
+    public void State() {
+        weaponSlotUI.SetActive(false);
         gameStateManager = GameObject.Find("GameStateManager").GetComponent<GameStateManager>();
     }
 
@@ -101,28 +117,45 @@ public class Shop : MonoBehaviour
     public void Buy() {
         switch(selected) {
             case "primary":
-                if(gameStateManager.money >= 100)
-                gameStateManager.DecreaseMoney(100);
+                if(gameStateManager.money >= 100) {
+                    buyAction = true;
+                    gameStateManager.DecreaseMoney(100);
+                }
                 break;
             case "rocket":
-                if(gameStateManager.money >= 100)
-                gameStateManager.DecreaseMoney(100);
+                if(gameStateManager.money >= 100) {
+                    buyAction = true;
+                    weaponSlotUI.SetActive(true);
+                    gameStateManager.DecreaseMoney(100);
+                }
                 break;
             case "laser":
-                if(gameStateManager.money >= 300)
-                gameStateManager.DecreaseMoney(300);
+                if(gameStateManager.money >= 200) {
+                    buyAction = true;
+                    weaponSlotUI.SetActive(true);
+                    gameStateManager.DecreaseMoney(100);
+                }
                 break;
             case "ice":
-                if(gameStateManager.money >= 300)
-                gameStateManager.DecreaseMoney(300);
+                if(gameStateManager.money >= 200) {
+                    buyAction = true;
+                    weaponSlotUI.SetActive(true);
+                    gameStateManager.DecreaseMoney(100);
+                }
                 break;
             case "future":
-                if(gameStateManager.money >= 500)
-                gameStateManager.DecreaseMoney(500);
+                if(gameStateManager.money >= 500) {
+                    buyAction = true;
+                    weaponSlotUI.SetActive(true);
+                    gameStateManager.DecreaseMoney(100);
+                }
                 break;
             case "health":
-                if(gameStateManager.money >= 200)
-                gameStateManager.DecreaseMoney(200);
+                if(gameStateManager.money >= 200) {
+                    buyAction = true;
+                    weaponSlotUI.SetActive(true);
+                    gameStateManager.DecreaseMoney(100);
+                }
                 break;
         }
     }
