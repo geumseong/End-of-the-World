@@ -1,8 +1,10 @@
-Fixing Shootings of Aliens   <-- Got No Idea, gonna be pain
+Fixing Shootings of Aliens   <-- Got No Idea, gonna be pain (Done)
 
-Script for Ice Turret / Ice Projectile
+Spawning System Change (So multiple enemies can appear at onces)
 
-Hold Click for Player Turret
+Script for Ice Turret / Ice Projectile - Enemies hit by it becomes slower (Done)
+
+Hold Click for Player Turret (Done)
 
 Buy (placing turret) / Sell Existing Turret / Cancel button after you click on buy.
 

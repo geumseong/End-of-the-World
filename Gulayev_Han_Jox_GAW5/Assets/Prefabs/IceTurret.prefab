@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8321532568817702792}
   - component: {fileID: 6508578949715218059}
-  - component: {fileID: 1958413996126830542}
+  - component: {fileID: 5529396174656011664}
   m_Layer: 0
   m_Name: IceTurret
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1958413996126830542
+--- !u!114 &5529396174656011664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 167810941592195765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97534b4133063eb4b8c2d187c6558fd2, type: 3}
+  m_Script: {fileID: 11500000, guid: ad9623c960592f74b9b5d8f78fd79734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   range: 15

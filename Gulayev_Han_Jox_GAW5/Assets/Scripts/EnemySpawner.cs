@@ -63,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(meteorite, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         meteoriteCount++;
+                        totalSpawn++;
                     }
                     else {
                         int spawnPoint = Random.Range(0, 14);
@@ -71,6 +72,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(smallAliens, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         smallAlienCount++;
+                        totalSpawn++;
                     }
                 }
                 else if(random == 2) {
@@ -81,6 +83,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(smallAliens, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         smallAlienCount++;
+                        totalSpawn++;
                     }
                     else {
                         int spawnPoint = Random.Range(0, 14);
@@ -89,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(meteorite, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<Meteorite>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         meteoriteCount++;
+                        totalSpawn++;
                     }
                 }
             }
@@ -112,6 +116,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(mediumAliens, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<MediumAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         mediumAlienCount++;
+                        totalSpawn++;
                     }
                     else {
                         int spawnPoint = Random.Range(0, 14);
@@ -120,6 +125,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(smallAliens, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         smallAlienCount++;
+                        totalSpawn++;
                     }
                 }
                 else if(random < 2) {
@@ -130,6 +136,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(smallAliens, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         smallAlienCount++;
+                        totalSpawn++;
                     }
                     else {
                         int spawnPoint = Random.Range(0, 14);
@@ -138,6 +145,7 @@ public class EnemySpawner : MonoBehaviour
                         GameObject newEnemy = Instantiate(mediumAliens, spawnPosition, transform.rotation);
                         newEnemy.GetComponent<MediumAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                         mediumAlienCount++;
+                        totalSpawn++;
                     }
                 }
             }
@@ -153,7 +161,7 @@ public class EnemySpawner : MonoBehaviour
                 GameObject selectedSpawn = spawnPoints[spawnPoint];
                 Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
                 GameObject newEnemy = Instantiate(mediumAliens, spawnPosition, transform.rotation);
-                newEnemy.GetComponent<SmallAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                newEnemy.GetComponent<MediumAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
                 mediumAlienCount++;
             }
             gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;

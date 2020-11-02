@@ -400,7 +400,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -425,9 +425,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00028800964, y: 0.18395948}
+  m_Offset: {x: -0.038272858, y: 0.029681683}
   serializedVersion: 2
-  m_Radius: 5.9415865
+  m_Radius: 6.711544
 --- !u!50 &500800913129254230
 Rigidbody2D:
   serializedVersion: 4
@@ -463,6 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.35
   direction: {x: 0, y: 0, z: 0}
+  range: 5
   fireRate: 0.5
   damage: 0.1
   shotSpeed: 400
