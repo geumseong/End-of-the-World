@@ -72,7 +72,7 @@ public class TurretProjectile : MonoBehaviour
                 gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(100);
             }
             else if(target.gameObject.transform.parent.gameObject.tag == "BossAlien") {
-                gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(300);
+                gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(1000);
             }
             Destroy(target.gameObject.transform.parent.gameObject);
             GameObject effectIns = (GameObject)Instantiate(DeathEffect, target.position, transform.rotation);
