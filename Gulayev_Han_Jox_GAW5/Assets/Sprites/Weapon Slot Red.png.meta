@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 19551b75c9bd4a24e84d2e302e54c1f2
+guid: 741337fecf243504e95d20e5c2d02aa4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8006056076217723707
-    second: Rocket Weapon_0
+      213: 5632035767013927866
+    second: Weapon Slot Red_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -90,13 +90,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rocket Weapon_0
+      name: Weapon Slot Red_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 590
-        width: 50
-        height: 50
+        x: 0
+        y: 10
+        width: 70
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -104,8 +104,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c45f25aa66c4e090800000000000000
-      internalID: -8006056076217723707
+      spriteID: abbe827b0b2092e40800000000000000
+      internalID: 5632035767013927866
       vertices: []
       indices: 
       edges: []

@@ -7,6 +7,17 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public GameStateManager gameStateManager;
+    public GameObject playerHealthImage;
+    public GameObject playerTurret;
+    public GameObject buyButton;
+    public GameObject sellButton;
+    public GameObject cancelButton;
+
+    public GameObject rocket;
+    public GameObject laser;
+    public GameObject ice;
+    public GameObject future;
+    GameObject selectedTurret;
 
     public GameObject primaryButton;
     public GameObject rocketButton;
@@ -33,12 +44,39 @@ public class Shop : MonoBehaviour
     public GameObject slotSW;
     public List<Sprite> slotSprite;
 
+    GameObject turretS;
+    int sellPriceS;
+    GameObject turretSE;
+    int sellPriceSE;
+    GameObject turretE;
+    int sellPriceE;
+    GameObject turretNE;
+    int sellPriceNE;
+    GameObject turretN;
+    int sellPriceN;
+    GameObject turretNW;
+    int sellPriceNW;
+    GameObject turretW;
+    int sellPriceW;
+    GameObject turretSW;
+    int sellPriceSW;
+
     string selected;
+    int refundMoney;
     bool buyAction;
     bool sellAction;
 
 
-    public void State() {
+    public void Start() {
+        slotS.GetComponent<Image>().sprite = slotSprite[0];
+        slotSE.GetComponent<Image>().sprite = slotSprite[0];
+        slotE.GetComponent<Image>().sprite = slotSprite[0];
+        slotNE.GetComponent<Image>().sprite = slotSprite[0];
+        slotN.GetComponent<Image>().sprite = slotSprite[0];
+        slotNW.GetComponent<Image>().sprite = slotSprite[0];
+        slotW.GetComponent<Image>().sprite = slotSprite[0];
+        slotSW.GetComponent<Image>().sprite = slotSprite[0];
+        cancelButton.SetActive(false);
         weaponSlotUI.SetActive(false);
         gameStateManager = GameObject.Find("GameStateManager").GetComponent<GameStateManager>();
     }
@@ -56,7 +94,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Name: \n-Upgrade Primary\nDamage: +damage (0/3)";
+        description.text = "Upgrade Primary\nCost: 100$\nDamage: +damage (0/3)";
     }
 
     public void PressOnRocket() {
@@ -67,7 +105,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Name: \n-Rocket Launcher\nRange: 7\nFire Rate: \nDamage: ";
+        description.text = "Rocket Launcher\nCost: 100$(S:50$)\nRange: 7\nFire Rate: \nDamage: ";
     }
 
     public void PressOnLaser() {
@@ -78,7 +116,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Name: \n-Laser Shooter\nRange: 10\nFire Rate: \nDamage: ";
+        description.text = "Laser Shooter\nCost: 200$(S:100$)\nRange: 10\nFire Rate: \nDamage: ";
     }
 
     public void PressOnIce() {
@@ -89,7 +127,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[1];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Name: \n-Ice Thrower\nRange: 15\nFire Rate: \nDamage: ";
+        description.text = "Ice Thrower\nCost: 200$(S:100$)\nRange: 15\nFire Rate: \nDamage: ";
     }
 
     public void PressOnFuture() {
@@ -100,7 +138,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[1];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Name: \n-Future Tech\nRange: 15\nFire Rate: \nDamage: ";
+        description.text = "Future Tech\nCost: 500$(S:250$)\nRange: 15\nFire Rate: \nDamage: ";
     }
 
     public void PressOnHealth() {
@@ -111,56 +149,247 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[1];
-        description.text = "Name: \n-Health Kit\nHeal Amount:\n-25%";
+        description.text = "Health Kit\nCost: 200$\nHeal Amount: 25%";
     }
 
     public void Buy() {
         switch(selected) {
             case "primary":
                 if(gameStateManager.money >= 100) {
-                    buyAction = true;
+                    playerTurret.GetComponent<PlayerTurret>().damage += 0.1f;
                     gameStateManager.DecreaseMoney(100);
                 }
                 break;
             case "rocket":
                 if(gameStateManager.money >= 100) {
+                    HideOnBuySell();
                     buyAction = true;
+                    refundMoney = 100;
                     weaponSlotUI.SetActive(true);
+                    selectedTurret = rocket;
                     gameStateManager.DecreaseMoney(100);
                 }
                 break;
             case "laser":
                 if(gameStateManager.money >= 200) {
+                    HideOnBuySell();
                     buyAction = true;
+                    refundMoney = 200;
                     weaponSlotUI.SetActive(true);
-                    gameStateManager.DecreaseMoney(100);
+                    selectedTurret = laser;
+                    gameStateManager.DecreaseMoney(200);
                 }
                 break;
             case "ice":
                 if(gameStateManager.money >= 200) {
+                    HideOnBuySell();
                     buyAction = true;
+                    refundMoney = 200;
                     weaponSlotUI.SetActive(true);
-                    gameStateManager.DecreaseMoney(100);
+                    selectedTurret = ice;
+                    gameStateManager.DecreaseMoney(200);
                 }
                 break;
             case "future":
                 if(gameStateManager.money >= 500) {
+                    HideOnBuySell();
                     buyAction = true;
+                    refundMoney = 500;
                     weaponSlotUI.SetActive(true);
-                    gameStateManager.DecreaseMoney(100);
+                    selectedTurret = future;
+                    gameStateManager.DecreaseMoney(500);
                 }
                 break;
             case "health":
                 if(gameStateManager.money >= 200) {
-                    buyAction = true;
-                    weaponSlotUI.SetActive(true);
-                    gameStateManager.DecreaseMoney(100);
+                    playerHealthImage.GetComponent<Image>().fillAmount += 0.25f;
+                    gameStateManager.DecreaseMoney(200);
                 }
                 break;
         }
     }
 
     public void Sell() {
+        HideOnBuySell();
+        sellAction = true;
+    }
 
+    public void Cancel() {
+        if(buyAction == true) {
+            gameStateManager.IncreaseMoney(refundMoney);
+            buyAction = false;
+        }
+        else if(sellAction == true) {
+            sellAction = false;
+        }
+        ShowAfterBuySell();
+    }
+
+    public void PressS() {
+        if(buyAction == true) {
+            Destroy(turretS);
+            turretS = Instantiate(selectedTurret, slotS.transform.position, transform.rotation);
+            sellPriceS = refundMoney / 2;
+            buyAction = false;
+            slotS.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretS != null) {
+                sellAction = false;
+                Destroy(turretS);
+                gameStateManager.IncreaseMoney(sellPriceS);
+                slotS.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressSE() {
+        if(buyAction == true) {
+            Destroy(turretSE);
+            turretSE = Instantiate(selectedTurret, slotSE.transform.position, transform.rotation);
+            sellPriceSE = refundMoney / 2;
+            buyAction = false;
+            slotSE.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretSE != null) {
+                sellAction = false;
+                Destroy(turretSE);
+                gameStateManager.IncreaseMoney(sellPriceSE);
+                slotSE.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressE() {
+        if(buyAction == true) {
+            Destroy(turretE);
+            turretE = Instantiate(selectedTurret, slotE.transform.position, transform.rotation);
+            sellPriceE = refundMoney / 2;
+            buyAction = false;
+            slotE.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretE != null) {
+                sellAction = false;
+                Destroy(turretE);
+                gameStateManager.IncreaseMoney(sellPriceE);
+                slotE.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressNE() {
+        if(buyAction == true) {
+            Destroy(turretNE);
+            turretNE = Instantiate(selectedTurret, slotNE.transform.position, transform.rotation);
+            sellPriceNE = refundMoney / 2;
+            buyAction = false;
+            slotNE.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretNE != null) {
+                sellAction = false;
+                Destroy(turretNE);
+                gameStateManager.IncreaseMoney(sellPriceNE);
+                slotNE.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressN() {
+        if(buyAction == true) {
+            Destroy(turretN);
+            turretN = Instantiate(selectedTurret, slotN.transform.position, transform.rotation);
+            sellPriceN = refundMoney / 2;
+            buyAction = false;
+            slotN.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretN != null) {
+                sellAction = false;
+                Destroy(turretN);
+                gameStateManager.IncreaseMoney(sellPriceN);
+                slotN.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressNW() {
+        if(buyAction == true) {
+            Destroy(turretNW);
+            turretNW = Instantiate(selectedTurret, slotNW.transform.position, transform.rotation);
+            sellPriceNW = refundMoney / 2;
+            buyAction = false;
+            slotNW.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretNW != null) {
+                sellAction = false;
+                Destroy(turretNW);
+                gameStateManager.IncreaseMoney(sellPriceNW);
+                slotNW.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressW() {
+        if(buyAction == true) {
+            Destroy(turretW);
+            turretW = Instantiate(selectedTurret, slotW.transform.position, transform.rotation);
+            sellPriceW = refundMoney / 2;
+            buyAction = false;
+            slotW.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretW != null) {
+                sellAction = false;
+                Destroy(turretW);
+                gameStateManager.IncreaseMoney(sellPriceW);
+                slotW.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+    public void PressSW() {
+        if(buyAction == true) {
+            Destroy(turretSW);
+            turretSW = Instantiate(selectedTurret, slotSW.transform.position, transform.rotation);
+            sellPriceSW = refundMoney / 2;
+            buyAction = false;
+            slotSW.GetComponent<Image>().sprite = slotSprite[1];
+            ShowAfterBuySell();
+        }
+        else if(sellAction == true) {
+            if(turretSW != null) {
+                sellAction = false;
+                Destroy(turretSW);
+                gameStateManager.IncreaseMoney(sellPriceSW);
+                slotSW.GetComponent<Image>().sprite = slotSprite[0];
+                ShowAfterBuySell();
+            }
+        }
+    }
+
+    void HideOnBuySell() {
+        gameStateManager.nextWaveButton.SetActive(false);
+        sellButton.SetActive(false);
+        buyButton.SetActive(false);
+        cancelButton.SetActive(true);
+        weaponSlotUI.SetActive(true);
+    }
+    void ShowAfterBuySell() {
+        gameStateManager.nextWaveButton.SetActive(true);
+        sellButton.SetActive(true);
+        buyButton.SetActive(true);
+        cancelButton.SetActive(false);
+        weaponSlotUI.SetActive(false);
     }
 }

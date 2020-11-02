@@ -60,8 +60,9 @@ public class GameStateManager : MonoBehaviour
         waveCount++;
         waveCountObj.GetComponent<Text>().text = "Waves: " + waveCount;
         enemySpawner.StartSpawnEnemy(waveCount);
-        nextWaveButton.SetActive(false);
         countDownObj.SetActive(false);
+        shopUI.GetComponent<Shop>().Cancel();
+        nextWaveButton.SetActive(false);
         shopUI.SetActive(false);
     }
 
