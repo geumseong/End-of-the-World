@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BossAlien : MonoBehaviour
 {
+    public int healthPoint = 4000;
     public float speed;
     public Vector3 direction;
     bool moving;

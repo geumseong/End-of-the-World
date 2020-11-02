@@ -13,6 +13,7 @@ public class Shop : MonoBehaviour
     public GameObject sellButton;
     public GameObject cancelButton;
 
+    public List<GameObject> primary;
     public GameObject rocket;
     public GameObject laser;
     public GameObject ice;
@@ -66,6 +67,8 @@ public class Shop : MonoBehaviour
     bool buyAction;
     bool sellAction;
 
+    int primaryUpgradeCount = 0;
+
 
     public void Start() {
         slotS.GetComponent<Image>().sprite = slotSprite[0];
@@ -94,7 +97,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Upgrade Primary\nCost: 100$\nDamage: +damage (0/3)";
+        description.text = "Upgrade Primary\nCost: 100$\nDamage: +3damage (" + primaryUpgradeCount + "/3)";
     }
 
     public void PressOnRocket() {
@@ -105,7 +108,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Rocket Launcher\nCost: 100$(S:50$)\nRange: 7\nFire Rate: \nDamage: ";
+        description.text = "Rocket Launcher\nCost: 100$(S:50$)\nRange: 7\nFire Rate: 2\nDamage: 10";
     }
 
     public void PressOnLaser() {
@@ -116,7 +119,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Laser Shooter\nCost: 200$(S:100$)\nRange: 10\nFire Rate: \nDamage: ";
+        description.text = "Laser Shooter\nCost: 200$(S:100$)\nRange: 10\nFire Rate: 2\nDamage: 15";
     }
 
     public void PressOnIce() {
@@ -127,7 +130,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[1];
         futureButton.GetComponent<Image>().sprite = futureSprite[0];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Ice Thrower\nCost: 200$(S:100$)\nRange: 15\nFire Rate: \nDamage: ";
+        description.text = "Ice Thrower\nCost: 300$(S:150$)\nRange: 15\nFire Rate: 1\nDamage: 25";
     }
 
     public void PressOnFuture() {
@@ -138,7 +141,7 @@ public class Shop : MonoBehaviour
         iceButton.GetComponent<Image>().sprite = iceSprite[0];
         futureButton.GetComponent<Image>().sprite = futureSprite[1];
         healthButton.GetComponent<Image>().sprite = healthSprite[0];
-        description.text = "Future Tech\nCost: 500$(S:250$)\nRange: 15\nFire Rate: \nDamage: ";
+        description.text = "Future Tech\nCost: 500$(S:250$)\nRange: 15\nFire Rate: 6\nDamage: 15";
     }
 
     public void PressOnHealth() {
@@ -155,8 +158,11 @@ public class Shop : MonoBehaviour
     public void Buy() {
         switch(selected) {
             case "primary":
-                if(gameStateManager.money >= 100) {
-                    playerTurret.GetComponent<PlayerTurret>().damage += 0.1f;
+                if(gameStateManager.money >= 100 && primaryUpgradeCount < 3) {
+                    primaryUpgradeCount++;
+                    description.text = "Upgrade Primary\nCost: 100$\nDamage: +3damage (" + primaryUpgradeCount + "/3)";
+                    playerTurret.GetComponent<PlayerTurret>().damage += 3;
+                    playerTurret.GetComponent<PlayerTurret>().projectile = primary[primaryUpgradeCount-1];
                     gameStateManager.DecreaseMoney(100);
                 }
                 break;
@@ -181,13 +187,13 @@ public class Shop : MonoBehaviour
                 }
                 break;
             case "ice":
-                if(gameStateManager.money >= 200) {
+                if(gameStateManager.money >= 300) {
                     HideOnBuySell();
                     buyAction = true;
-                    refundMoney = 200;
+                    refundMoney = 300;
                     weaponSlotUI.SetActive(true);
                     selectedTurret = ice;
-                    gameStateManager.DecreaseMoney(200);
+                    gameStateManager.DecreaseMoney(300);
                 }
                 break;
             case "future":

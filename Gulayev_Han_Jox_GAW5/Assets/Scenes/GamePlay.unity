@@ -866,7 +866,7 @@ MonoBehaviour:
   shotSpeed: 400
   projectile: {fileID: 6486203582791092684, guid: 9053be155c066ef4ea0f6f27740dd206,
     type: 3}
-  damage: 0.1
+  damage: 10
   firePoint: {fileID: 2115941884}
   fireRate: 10
 --- !u!212 &316381217
@@ -3135,6 +3135,10 @@ MonoBehaviour:
   buyButton: {fileID: 1280569643}
   sellButton: {fileID: 617875888}
   cancelButton: {fileID: 1223667851}
+  primary:
+  - {fileID: 8302301789168513183, guid: a4a87cef7eaa0bc458ccae5afb004e7b, type: 3}
+  - {fileID: 2881970569966818481, guid: 234cbff1cd892ba40b566877fe9523b1, type: 3}
+  - {fileID: 3558282386652757051, guid: eb444ae9431dd5e419b5c95f47ccf658, type: 3}
   rocket: {fileID: 6826547397974682257, guid: b23bcc601fd4f6e45a65533c0f11fb54, type: 3}
   laser: {fileID: 2308344933725364498, guid: 91aa711b50d665049953bdec6840462a, type: 3}
   ice: {fileID: 167810941592195765, guid: 68446b18da3b9434ebd68e3728196c1b, type: 3}
@@ -3946,7 +3950,7 @@ MonoBehaviour:
   countDownObj: {fileID: 1686447711}
   shopUI: {fileID: 942766961}
   moneyOwnedTxt: {fileID: 1834325634}
-  money: 99999
+  money: 0
   GameOverUI: {fileID: 370501581}
 --- !u!1 &1102667092
 GameObject:
@@ -4201,7 +4205,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 200$
+  m_Text: 300$
 --- !u!222 &1160457801
 CanvasRenderer:
   m_ObjectHideFlags: 0

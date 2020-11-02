@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MediumAlien : MonoBehaviour
 {
+    public int healthPoint = 175;
     public float speed;
     public Vector3 direction;
     bool moving;

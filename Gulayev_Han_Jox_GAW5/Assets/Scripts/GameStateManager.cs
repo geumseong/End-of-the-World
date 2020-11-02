@@ -8,6 +8,7 @@ public class GameStateManager : MonoBehaviour
     EnemySpawner enemySpawner;
     public GameObject waveCountObj;
     int waveCount;
+    int phase = 1;
     public GameObject nextWaveButton;
     public bool waveStatus;
     public bool countDownStatus;
@@ -57,13 +58,16 @@ public class GameStateManager : MonoBehaviour
         if(coroutine != null) {
             StopCoroutine(coroutine);
         }
-        waveCount++;
-        waveCountObj.GetComponent<Text>().text = "Waves: " + waveCount;
-        enemySpawner.StartSpawnEnemy(waveCount);
+        phase = (int)((waveCount/5) + 1);
+        Debug.Log("phase = " + phase);
+        Debug.Log("waveCount%5+1 = " + ((waveCount)%5)+1);
+        waveCountObj.GetComponent<Text>().text = "Waves: " + (waveCount + 1);
+        enemySpawner.StartSpawnEnemy((waveCount%5)+1, phase);
         countDownObj.SetActive(false);
         shopUI.GetComponent<Shop>().Cancel();
         nextWaveButton.SetActive(false);
         shopUI.SetActive(false);
+        waveCount++;
     }
 
     public void StartCountDown() {

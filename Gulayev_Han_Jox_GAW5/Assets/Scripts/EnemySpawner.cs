@@ -12,9 +12,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject gameStateManagerObj;
 
     // Start is called before the first frame update
-    public void StartSpawnEnemy(int waveCount)
+    public void StartSpawnEnemy(int waveCount, int phase)
     {
-        StartCoroutine(SpawnEnemy(waveCount));
+        StartCoroutine(SpawnEnemy(waveCount, phase));
     }
 
     void Start() {
@@ -27,15 +27,15 @@ public class EnemySpawner : MonoBehaviour
         
     }
 
-    IEnumerator SpawnEnemy(int waveCount) {
+    IEnumerator SpawnEnemy(int waveCount, int phase) {
         if(waveCount > 5) {
 
         }
         else if(waveCount == 1) {
             int meteoriteCount = 0;
-            int maxMeteoriteCount = 10;
+            int maxMeteoriteCount = 10 * phase;
             while(meteoriteCount < maxMeteoriteCount) {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(2 / phase);
                 int spawnPoint = Random.Range(0, 14);
                 GameObject selectedSpawn = spawnPoints[spawnPoint];
                 Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
@@ -49,12 +49,12 @@ public class EnemySpawner : MonoBehaviour
         else if(waveCount == 2) {
             int meteoriteCount = 0;
             int smallAlienCount = 0;
-            int maxMeteoriteCount = 10;
-            int maxSmallAlienCount = 5;
+            int maxMeteoriteCount = 10 * phase;
+            int maxSmallAlienCount = 5 * phase;
             int totalSpawn = 0;
             while(totalSpawn < (maxMeteoriteCount + maxSmallAlienCount)) {
                 int random = Random.Range(0, 3);
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds((float) 2f / phase);
                 if(random < 2) {
                     if(meteoriteCount < maxMeteoriteCount) {
                         int spawnPoint = Random.Range(0, 14);
@@ -102,12 +102,12 @@ public class EnemySpawner : MonoBehaviour
         else if(waveCount == 3) {
             int mediumAlienCount = 0;
             int smallAlienCount = 0;
-            int maxMediumAlienCount = 5;
-            int maxSmallAlienCount = 10;
+            int maxMediumAlienCount = 5 * phase;
+            int maxSmallAlienCount = 10 * phase;
             int totalSpawn = 0;
             while(totalSpawn < (maxMediumAlienCount + maxSmallAlienCount)) {
                 int random = Random.Range(0, 3);
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(2 / phase);
                 if(random == 2) {
                     if(mediumAlienCount < maxMediumAlienCount) {
                         int spawnPoint = Random.Range(0, 14);
@@ -154,9 +154,9 @@ public class EnemySpawner : MonoBehaviour
         }
         else if(waveCount == 4) {
             int mediumAlienCount = 0;
-            int maxMediumAlienCount = 15;
+            int maxMediumAlienCount = 15 * phase;
             while(mediumAlienCount < maxMediumAlienCount) {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(2 / phase);
                 int spawnPoint = Random.Range(0, 14);
                 GameObject selectedSpawn = spawnPoints[spawnPoint];
                 Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
@@ -168,14 +168,20 @@ public class EnemySpawner : MonoBehaviour
             yield return null;
         }
         else if(waveCount == 5) {
-            yield return new WaitForSeconds(2);
-            int spawnPoint = Random.Range(0, 14);
-            GameObject selectedSpawn = spawnPoints[spawnPoint];
-            Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
-            GameObject newEnemy = Instantiate(bossAliens, spawnPosition, transform.rotation);
-            newEnemy.GetComponent<BossAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+            int maxBossAlienCount = 1 * phase;
+            int bossAlienCount = 0;
+            while(bossAlienCount < maxBossAlienCount) {
+                yield return new WaitForSeconds(2 / phase);
+                int spawnPoint = Random.Range(0, 14);
+                GameObject selectedSpawn = spawnPoints[spawnPoint];
+                Vector3 spawnPosition = new Vector3(selectedSpawn.transform.position.x, selectedSpawn.transform.position.y, selectedSpawn.transform.position.z);
+                GameObject newEnemy = Instantiate(bossAliens, spawnPosition, transform.rotation);
+                newEnemy.GetComponent<BossAlien>().direction = (GameObject.Find("earth").transform.position - spawnPosition);
+                bossAlienCount++;
+            }
 
             gameStateManagerObj.GetComponent<GameStateManager>().waveStatus = false;
+            yield return null;
         }
         yield return null;
     }

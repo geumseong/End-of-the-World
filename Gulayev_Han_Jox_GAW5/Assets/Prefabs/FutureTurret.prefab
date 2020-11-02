@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 15
   fireRate: 6
-  damage: 0.2
+  damage: 15
   shotSpeed: 30
   projectile: {fileID: 2953587519327573346, guid: 1d250eac85d12914c9fb44eeca2390ca,
     type: 3}

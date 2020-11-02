@@ -28,7 +28,22 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider) {
         if(collider.tag == "Enemy") {
-            collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
+            if(collider.gameObject.transform.parent.gameObject.tag == "Meteorite"){
+                int hp = collider.gameObject.transform.parent.gameObject.GetComponent<Meteorite>().healthPoint;
+                collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
+            else if(collider.gameObject.transform.parent.gameObject.tag == "SmallAlien") {
+                int hp = collider.gameObject.transform.parent.gameObject.GetComponent<SmallAlien>().healthPoint;
+                collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
+            else if(collider.gameObject.transform.parent.gameObject.tag == "MediumAlien") {
+                int hp = collider.gameObject.transform.parent.gameObject.GetComponent<MediumAlien>().healthPoint;
+                collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
+            else if(collider.gameObject.transform.parent.gameObject.tag == "BossAlien") {
+                int hp = collider.gameObject.transform.parent.gameObject.GetComponent<BossAlien>().healthPoint;
+                collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
             if(collider.transform.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
                 if(collider.gameObject.transform.parent.gameObject.tag == "Meteorite"){
                     gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(20);

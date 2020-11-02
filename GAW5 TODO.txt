@@ -1,6 +1,6 @@
 Fixing Shootings of Aliens   <-- Got No Idea, gonna be pain (Done)
 
-Spawning System Change (So multiple enemies can appear at onces)
+Spawning System Change (So multiple enemies can appear at onces) (Done)
 
 Script for Ice Turret / Ice Projectile - Enemies hit by it becomes slower (Done)
 
@@ -8,9 +8,11 @@ Hold Click for Player Turret (Done)
 
 Buy (placing turret) / Sell Existing Turret / Cancel button after you click on buy. (Done)
 
+Change Sprite of Primary Gun (Done)
+
 Balancings
- - Balancing (spawned enemies & Damage & Price)   <-- Got No Idea, gonna be pain
- - Damage / HP system   <-- Got No Idea, gonna be pain
+ - Balancing (spawned enemies & Damage & Price)   <-- Got No Idea, gonna be pain (Done)
+ - Damage / HP system   <-- Got No Idea, gonna be pain (Done)
 
 In-Game Menu  <-- Timescale 0f + Show Canvas (Continue button/Resume button + Restart Button + Back To Main Menu Button) - (Done)
 

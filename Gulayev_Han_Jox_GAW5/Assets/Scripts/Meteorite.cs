@@ -9,7 +9,7 @@ public class Meteorite : MonoBehaviour
     public GameObject rotateImageObj;
     public float speed;
     public Vector3 direction;
-    public int healthPoint = 100;
+    public int healthPoint = 70;
     public int rotationSpeed;
     GameObject gameStateManagerObj;
 

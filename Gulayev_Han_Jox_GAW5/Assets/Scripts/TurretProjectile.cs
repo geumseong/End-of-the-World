@@ -45,7 +45,22 @@ public class TurretProjectile : MonoBehaviour
     }
 
     void HitTarget() {
-        target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= damage;
+        if(target.gameObject.transform.parent.gameObject.tag == "Meteorite"){
+                int hp = target.gameObject.transform.parent.gameObject.GetComponent<Meteorite>().healthPoint;
+                target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
+            else if(target.gameObject.transform.parent.gameObject.tag == "SmallAlien") {
+                int hp = target.gameObject.transform.parent.gameObject.GetComponent<SmallAlien>().healthPoint;
+                target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
+            else if(target.gameObject.transform.parent.gameObject.tag == "MediumAlien") {
+                int hp = target.gameObject.transform.parent.gameObject.GetComponent<MediumAlien>().healthPoint;
+                target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
+            else if(target.gameObject.transform.parent.gameObject.tag == "BossAlien") {
+                int hp = target.gameObject.transform.parent.gameObject.GetComponent<BossAlien>().healthPoint;
+                target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount -= (damage/hp);
+            }
         if(target.GetChild(0).transform.Find("HPBarFull").GetComponent<Image>().fillAmount <= 0) {
             if(target.gameObject.transform.parent.gameObject.tag == "Meteorite"){
                 gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(20);
