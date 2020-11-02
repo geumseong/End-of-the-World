@@ -55,7 +55,7 @@ public class Projectile : MonoBehaviour
                     gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(100);
                 }
                 else if(collider.gameObject.transform.parent.gameObject.tag == "BossAlien") {
-                    gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(300);
+                    gameStateManagerObj.GetComponent<GameStateManager>().IncreaseMoney(1000);
                 }
                 Destroy(collider.gameObject.transform.parent.gameObject);
                 GameObject effectIns = (GameObject)Instantiate(DeathEffect, collider.gameObject.transform.position, transform.rotation);

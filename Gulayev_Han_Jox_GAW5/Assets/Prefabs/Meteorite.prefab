@@ -149,7 +149,7 @@ MonoBehaviour:
   rotateImageObj: {fileID: 3751446523274131793}
   speed: 0.35
   direction: {x: 0, y: 0, z: 0}
-  healthPoint: 100
+  healthPoint: 70
   rotationSpeed: 40
 --- !u!58 &-7546345504703694163
 CircleCollider2D:

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    public GameObject cameraShake;
     Rigidbody2D rb;
     public ParticleSystem ps;
     public Vector2 direction;
@@ -14,6 +15,7 @@ public class EnemyProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cameraShake = GameObject.Find("Main Camera");
         rb = GetComponent<Rigidbody2D>();
         gameStateManagerObj = GameObject.Find("GameStateManager");
     }
@@ -27,6 +29,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider) {
         if(collider.tag == "Player") {
+            cameraShake.GetComponent<CameraShake>().StartShake();
             collider.transform.GetChild(0).transform.Find("EarthHPBarFull").GetComponent<Image>().fillAmount -= damage;
             if(collider.transform.GetChild(0).transform.Find("EarthHPBarFull").GetComponent<Image>().fillAmount <= 0) {
                 Destroy(collider.gameObject);
